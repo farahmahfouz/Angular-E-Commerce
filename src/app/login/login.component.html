@@ -1,0 +1,35 @@
+<div class="container mt-5 w-50">
+    <form #loginform="ngForm" (ngSubmit)="login(loginform)">
+        <div class="mb-3">
+            <label for="InputEmail" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" ngModel #email="ngModel" required pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}">
+            @if(email.touched && email.invalid){
+                <div class="text-form text-danger">
+                    @if(email.hasError('required')){
+                        <small>Required!</small>
+                    }
+                    @if(email.hasError('pattern')){
+                        <small>Not match</small>
+                    }
+                </div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="InputPassword" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="InputPassword" ngModel #password="ngModel" required>
+            @if(password.touched && password.invalid){
+                <div class="text-form text-danger">
+                    @if(password.hasError('required')){
+                        <small>Required!</small>
+                    }
+                </div>
+            }
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-success" type="button" [disabled]="loginform.invalid">Login</button>
+        </div>
+        <p class="text-center pt-5 fw-bolder fs-6">Don't Have account! <span><a class="text-decoration-none text-success" routerLink="/register">Sign Up</a></span></p>
+
+    </form>
+
+</div>

@@ -1,0 +1,30 @@
+<a [routerLink]="['/products-details', items.id]" class="text-decoration-none">
+    <div class="card h-100 ">
+
+        @if(items.availabilityStatus === 'Low Stock' ){
+
+        <p class="p-3"><span class="badge out-stock p-2">Low Stock</span></p>
+
+        }@else{
+
+        <p class="p-3"><span class="badge in-stock  p-2">In Stock</span></p>
+
+        }
+
+        <img [src]="items.thumbnail" class="card-img-top" alt="..." />
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h6 class="card-title">
+                    {{items.title}}
+                </h6>
+                <p class="card-text fw-bolder">${{items.price}}</p>
+            </div>
+                <div [innerHTML]="items.rating | rating"></div>
+            <div class="mt-3">
+                <button type="button" class="btn btn-outline-success px-3 rounded-pill">Add To Card</button>
+            </div>
+
+
+        </div>
+    </div>
+</a>

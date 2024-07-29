@@ -1,0 +1,37 @@
+<div class="container mt-5 w-100">
+  <h3>Cart</h3>
+
+  <div class=" d-flex justify-content-around pt-4 fw-bold">
+    <p>Description</p>
+    <p>Quantity</p>
+    <p>Remove</p>
+    <p>Price</p>
+  </div>
+  <hr>
+  @for(item of cartItems; track item.id){
+  <div class="d-flex justify-content-around align-items-center">
+    <div class="d-flex">
+      <img [src]="item.thumbnail" style="width: 140px; height: 140px;" alt="...">
+      <div class="flex-column align-content-center pt-3">
+        <p class="fw-bolder mt-2">{{item.title}}</p>
+        <p>{{item.brand}}</p>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center gap-3 align-items-center">
+      <button class="btn btn-danger" (click)="decreaseCounter(item.id)">-</button>
+      <p class="fw-bolder fs-5 " style="padding-top: 10px;">{{item.quantity}}</p>
+      <button class="btn btn-success" (click)="increaseCounter(item.id)">+</button>
+    </div>
+
+    <div>
+      <button class="btn btn-secondary" (click)="removeItem(item.id)">x</button>
+    </div>
+    <div>
+      <p class="fw-bolder">${{ getTotalPriceForItem(item) }}</p>
+    </div>
+    <hr>
+  </div>}
+  <div class="containe d-flex justify-content-end">
+    <p>Total price is: ${{ getTotalPrice() }}</p>
+  </div>
+</div>

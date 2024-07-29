@@ -1,0 +1,19 @@
+<nav class="navbar bg-body-tertiary ">
+  <div class="container ">
+    <div>
+      <a class="navbar-brand fs-3 text-success fw-bolder" routerLink="/">Shop</a>
+    </div>
+
+    <div>
+      <div class="d-flex gap-3">
+        <a class="nav-link" routerLink="/register" routerLinkActive = "fw-bolder">Register</a>
+        <a class="nav-link" routerLink="/login" routerLinkActive = "fw-bolder">Login</a>
+        <a class="nav-link" routerLink="/cart" routerLinkActive = "fw-bolder"><i class="fa-solid fa-cart-plus position-relative">
+           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+           {{totalItems}}
+          <span class="visually-hidden">unread messages</span>
+        </span></i></a>
+      </div>
+    </div>
+  </div>
+</nav>

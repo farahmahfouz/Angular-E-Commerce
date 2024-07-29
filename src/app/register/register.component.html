@@ -1,0 +1,82 @@
+<div class="container w-50 mt-5">
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
+        <div class="mb-3">
+            <label for="InputName" class="form-label">Name</label>
+            <input type="text" formControlName="name" class="form-control" id="InputName" aria-describedby="nameHelp">
+            @if(name?.touched && name?.invalid){
+            <div class="form-text text-danger">
+                @if(name?.hasError('required')){
+                <small>Required!</small>
+                }
+            </div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="InputUserName" class="form-label">User Name</label>
+            <input type="text" formControlName="username" class="form-control" id="InputUserName"
+                aria-describedby="usernameHelp">
+            @if(username?.touched && username?.invalid){
+            <div class="text-form text-danger">
+                @if(username?.hasError('required')){
+                <small>Required!</small>
+                }
+                @if(username?.hasError('pattern')){
+                <small>Remove Spaces</small>
+                }
+            </div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            @if(email?.touched && email?.invalid ){
+            <div class="text-form text-danger">
+                @if(email?.hasError('required')){
+                <small>Required!</small>
+                }
+                @if(email?.hasError('email')){
+                <small>Didn't match!</small>
+                }
+            </div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+            @if(password?.touched && password?.invalid){
+            <div class="text-form text-danger">
+                @if(password?.hasError('required')){
+                <small>Required!</small>
+                }
+                @else if(password?.hasError('minlength')){
+                <small>At least 8 characters long!</small>
+                }
+                @else{
+                <small>Must contain at least one digit and special character!</small>
+                }
+            </div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+            <input type="password" formControlName="confirmpassword" class="form-control" id="exampleInputPassword2">
+            @if(confirmpassword?.touched && confirmpassword?.invalid){
+            <div class="text-form text-danger">
+                @if(confirmpassword?.hasError('required')){
+                <small>Required!</small>
+                }
+                @else if(confirmpassword?.hasError('notMatch')){
+                <small>It didn't match!</small>
+                }
+            </div>
+            }
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Sign Up</button>
+        </div>
+
+        <p class="text-center pt-5 fw-bolder fs-6">Already Have account! <span><a class="text-decoration-none text-success" routerLink="/login">Login</a></span></p>
+    </form>
+</div>

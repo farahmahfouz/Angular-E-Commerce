@@ -1,0 +1,46 @@
+<div class="card mt-5 w-75 m-auto">
+    <div class="d-flex">
+        <div>
+            <img [src]="itemsDetails.thumbnail" class="images" alt="...">
+        </div>
+        <div class="card-body w-100">
+            <h2 class="card-title">{{itemsDetails.title}}</h2>
+            <p class="card-text">{{itemsDetails.description}}</p>
+            
+            <div [innerHTML]="itemsDetails.rating | rating"></div>
+            <hr>
+            <p class="card-text fs-3 fw-bolder">${{itemsDetails.price}}</p>
+            <p>Suggested payments with 6 months special financing</p>
+            @if(itemsDetails.stock === 0 ){
+            <p><span class="badge text-bg-secondary rounded-pill py-2 px-3">Out Of Stock</span></p>
+            }@else if(itemsDetails.stock > 0) {
+            <p><span class="badge text-bg-success rounded-pill py-2 px-3">In Stock</span></p>
+            }
+            <h6>More Information</h6>
+            <div class="d-flex mt-3">
+                <div><span class="badge text-dark bg-body-secondary rounded-pill py-2 px-3">{{itemsDetails.category}}</span></div>
+                <div class="px-4"><span class="badge text-dark bg-body-secondary rounded-pill py-2 px-3">{{itemsDetails.brand}}</span>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex">
+                <div class="bg-body-secondary text-center fs-5 rounded-pill d-flex justify-content-around" style="width: 150px; height: 35px;">
+                    <button class="fw-bolder" style="border: none; background-color: transparent;" (click)="decreaseCounter()" >-</button>
+                    <p class="pt-1">{{counter}}</p>
+                    <button class="fw-bolder" style="border: none;  background-color: transparent;" (click)="increaseCounter()">+</button>
+                </div>
+                <div class="ps-4">
+                    <small class="fs-6 fw-lighter">Only <span class="text-warning fw-medium"> {{itemsDetails.stock}} Items</span> Lefts! </small>
+                    <small class="fs-6 fw-lighter">Don't miss it</small>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-start">
+                <button class="btn btn-success rounded-pill px-3 me-4" >Buy Now</button>
+                <button class="btn btn-outline-success rounded-pill px-4" (click)="addToCart()">Add To Cart</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
